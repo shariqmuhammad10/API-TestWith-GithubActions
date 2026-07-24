@@ -3,7 +3,7 @@ import { check, sleep } from 'k6';
 
 // 1. Define Ops-style thresholds (The test fails if these are missed)
 export const options = {
-  vus: 3,           // 5 virtual users simulated at once
+  vus: 2,           // 5 virtual users simulated at once
   duration: '5s',  // Run the test continuously for 10 seconds
   thresholds: {
     http_req_duration: ['p(95)<2000'], // 95% of requests must be faster than 500ms

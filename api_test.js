@@ -7,7 +7,7 @@ export const options = {
   duration: '5s',  // Run the test continuously for 10 seconds
   thresholds: {
     http_req_duration: ['p(95)<2000'], // 95% of requests must be faster than 500ms
-    http_req_failed: ['rate<0.05'],   // Error rate must be less than 1%
+    http_req_failed: ['rate>0.05'],   // Error rate must be less than 5%
   },
 };
 

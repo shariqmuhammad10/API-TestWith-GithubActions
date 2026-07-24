@@ -5,8 +5,6 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 0 * * *' # Optional: Runs automatically every day at midnight (Ops style)
 
 jobs:
   k6_local_test:
@@ -14,10 +12,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Pull your repository code into the runner
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Step 2: Install the official k6 environment onto the runner
+      - name: Setup Grafana k6
+        uses: grafana/setup-k6-action@v1
+
+      # Step 3: Run your test script using the modern runner action
       - name: Run k6 Local Test
-        uses: grafana/k6-action@v1
+        uses: grafana/run-k6-action@v1
         with:
-          filename: api_test.js
+          path: api_test.js

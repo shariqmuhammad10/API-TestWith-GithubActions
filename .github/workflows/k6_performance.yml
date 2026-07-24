@@ -1,4 +1,4 @@
-yamlname: k6 API Performance Test
+name: k6 API Performance Test
 
 on:
   push:

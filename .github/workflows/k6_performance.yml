@@ -1,0 +1,23 @@
+yamlname: k6 API Performance Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *' # Optional: Runs automatically every day at midnight (Ops style)
+
+jobs:
+  k6_local_test:
+    name: Run k6 Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run k6 Local Test
+        uses: grafana/k6-action@v1
+        with:
+          filename: api_test.js
